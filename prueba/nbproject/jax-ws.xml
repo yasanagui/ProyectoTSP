@@ -4,6 +4,9 @@
     <service name="WebServiceGraficaPersonal">
       <implementation-class>webService.WebServiceGraficaPersonal</implementation-class>
     </service>
+    <service name="WebServiceAltaAlumno">
+      <implementation-class>webService.WebServiceAltaAlumno</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
