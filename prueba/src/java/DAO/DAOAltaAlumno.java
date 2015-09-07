@@ -15,25 +15,28 @@ public class DAOAltaAlumno {
     
      public boolean altaAlumno(int matricula, String nombre, String contraseña)
     {
-       Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        
-        //Add new alumno object
-        Alumno alumno = new Alumno();
-        alumno.setMatricula(matricula);
-        alumno.setNombre(nombre);
-        alumno.setContrasena(contraseña);
-         
-        //Save the alumno in database
-        session.save(alumno);
- 
-        if(alumno!=null)
+        try
         {
-          session.getTransaction().commit();
-          session.close();
-        //Commit the transaction
-        return true;
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            //Add new alumno object
+            Alumno alumno = new Alumno();
+            alumno.setMatricula(matricula);
+            alumno.setNombre(nombre);
+            alumno.setContrasena(contraseña);
+
+            //Save the alumno in database
+            session.save(alumno);
+            session.getTransaction().commit();
+            session.close();
+            //Commit the transaction
+            return true;   
         }
-        return false;
+        catch(Exception ex)
+        {
+            return false;
+        }
+       
     }
 }
